@@ -1,0 +1,14 @@
+[project]
+name = "linked-hash-map"
+version = "0.1.0"
+description = "Insertion-ordered hash map that reorders keys on access for use as an LRU cache"
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
