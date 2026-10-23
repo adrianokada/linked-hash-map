@@ -34,3 +34,10 @@ Methods: `__getitem__`, `__setitem__`, `__delitem__`, `__contains__`, `__iter__`
 - `__contains__` never reorders; querying membership is not an access.
 - `setdefault` on a missing key inserts at the end; on an existing key it returns the value without reordering, even in access-order mode (it does not go through `__getitem__`).
 - `pop(key)` with no default raises `KeyError`; pass an explicit default (including `None`) to suppress the raise.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
